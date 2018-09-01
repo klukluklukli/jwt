@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-accent-4">¡Register Now!</h1>
+        <div class="row center">
+          <h5 class="header col s12 light grey-text text-darken-1">Welcome to our site, please write a few lines:</h5>
+        </div>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="Escribe tu nombre" id="nombre" type="text" class="validate">
+                <label for="first_name">User Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="Escribe tu email" id="mail" type="email" class="validate">
+                <label for="last_name">E-mail</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="Escribe una contraseña" id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="Confirma tu contraseña" id="confirma" type="password" class="validate">
+                <label for="password">Confirm password</label>
+                <span id='message'></span>
+              </div>
+            </div>
+            <button id="button" class="btn waves-effect waves-light" type="button" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <p id="demo"></p>
+
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>
