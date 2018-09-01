@@ -1,35 +1,127 @@
-app.controller('login', function(){
+app.defaultRoute = '/register';
 
+app.controller('login', function($){
+
+  var emailInput = $('#email');
+  var passwordInput = $('#password');
+
+  $('#button').addEventListener('click', function() {
+
+    var errors = [];
+
+    // si la contraseña es incorrecta
+    if (!(/^\w+@\w+\.+[a-z]?/.test(emailInput.value))) {
+      // mostrar el error
+      errors.push('Escribe un correo valido pls')
+    }
+
+    // si los passwords no son correctos
+    if (passwordInput.value.length < 4) {
+      errors.push('La contraseña no es válida');
+    }
+
+    if ($('.card-panel')) {
+      $('.card-panel').parentElement.removeChild($('.card-panel'))
+    }
+
+    if (errors.length > 0) {
+      errorMessage(errors)
+      return;
+    }
+
+
+    // TODO mandar datos al servidor
+    alert('salu2 todo bien')
+
+    function errorMessage(errors) {
+
+      var msg = '';
+      for (err of errors) {
+        msg += err + '<br>'
+      }
+
+      $('.container').appendChild(
+        $.createElement(
+          'div',
+          'card-panel teal',
+          '',
+          $.createElement(
+            'span',
+            'white-text',
+            msg
+          )
+        )
+      );
+    }
+  });
 })
 
-app.controller('register', function(){
-  var nombreInput = document.getElementById('nombre');
-  var apellidoInput = document.getElementById('apellido');
-  var passwordInput = document.getElementById('password');
-  var confirmaInput = document.getElementById('confirma');
-  var buttonElement = document.getElementById('button');
+app.controller('register', function($){
 
-  buttonElement.addEventListener('click', function(){
-      var nombre = nombreInput.value;
-      var apellido = apellidoInput.value;
-      var password = passwordInput.value;
-      var confirma = confirmaInput.value;
-      alert("Tu nombre es " + nombre + ", tu apellido es " + apellido);
+  var usernameInput = $('#nombre');
+  var emailInput = $('#email');
+  var passwordInput = $('#password');
+  var confirmaInput = $('#confirma');
 
-      if (nombre.length > 4) {
-        console.log('Cool, tu nombre es válido');
-      } else if(nombre.length < 4) {
-        console.log('Dude tu nombre no es válido');
-      } else {
-        console.log('Ingresa un nombre válido');
+  $('#button').addEventListener('click', function() {
+
+    var errors = [];
+
+    // si username es menor a 4
+    if (usernameInput.value.length < 4) {
+      // mostrar el error
+      errors.push('Nombre invalido, escribe un nombre de usuario con una longitud de almenos 4 caracteres')
+    }
+
+    // si la contraseña es incorrecta
+    if (!(/^\w+@\w+\.+[a-z]?/.test(emailInput.value))) {
+      // mostrar el error
+      errors.push('Escribe un correo valido pls')
+    }
+
+    // si los passwords no son correctos
+    if (passwordInput.value.length < 4 || confirmaInput.value.length < 4) {
+      errors.push('Las cotraseñas no son validas');
+    } else {
+      if (passwordInput.value !== confirmaInput.value) {
+        // mostrar el error
+        errors.push('Las contraseñas no coinciden uwu.')
+      }
+    }
+
+    if ($('.card-panel')) {
+      $('.card-panel').parentElement.removeChild($('.card-panel'))
+    }
+
+    if (errors.length > 0) {
+      errorMessage(errors)
+      return;
+    }
+
+
+    // TODO mandar datos al servidor
+    alert('salu2 todo bien')
+
+    function errorMessage(errors) {
+
+      var msg = '';
+      for (err of errors) {
+        msg += err + '<br>'
       }
 
-      if (password == confirma) {
-        console.log('Tu contraseña es válida');
-      } else if (password != confirma) {
-        console.log('Tu contraseña no es válida');
-      }
-
+      $('.container').appendChild(
+        $.createElement(
+          'div',
+          'card-panel teal',
+          '',
+          $.createElement(
+            'span',
+            'white-text',
+            msg
+          )
+        )
+      );
+    }
   });
 })
 
